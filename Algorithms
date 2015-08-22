@@ -1,0 +1,105 @@
+A.
+	INICIO
+   Num ← 0
+   Cds ← 0
+Mostrar “INGRESAR TAMAÑO DEL DISCO DURO EN GB”
+Leer Num
+SI (Num>0) ENTONCES
+	Num ← Num * 1024
+	Cds ← Num/700
+	Mostrar “USTED REQUIERE UN TOTAL DE ” + Cds + “ CDS EN BLANCO PARA          EL BACK UP”
+SI NO
+	Mostrar “INGRESE UN NÚMERO VÁLIDO”
+FIN SI
+	FIN
+
+B.	INICIO
+Num_Horas ← 0, Num_Horas_Adicionales ← 0
+Valor_Hora ← 0, Total_Pago ← 0
+
+MOSTRAR “Ingrese Tarifa por Hora”}
+		Leer Valor_Hora
+MOSTRAR “Ingrese Número de Horas Trabajadas”
+		Leer Num_Horas
+
+SI (Num_Horas > 40) ENTONCES
+		Num_Horas_Adicionales ← Num_Horas – 40
+Total_Pago ← (40 * Valor_Hora) +    ((Num_Horas_Adicionales) * (Valor_Hora * 1,5))
+		SI NO
+			Total_Pago ← Num_Horas * Valor_Hora  
+		FIN SI
+			MOSTRAR “El salario a pagar al trabajador es $: ” + Total_Pago
+	FIN
+
+C.	INICIO AHORCADO
+Tamano_Palabra ← 15
+Intentos ← 5
+Vector [Tamano_Palabra]
+Palabras [1] ← “Cama”
+Palabras [2] ← “Chikunguña”
+Palabras [3] ← “Amazonas”
+Palabras [4] ← “Reconciliación”
+Palabras [5] ← “Transportadores”
+Cabeza ← “ “
+Cuerpo ← “ “
+Pos_Inicial ← “ “
+Pos_Media ← “ “
+Pos_Izquierda ← “ “
+Pos_Derecho ← “ “
+Turno ← 0
+Correcto ← 0
+Palabra ← Palabras [Azar(Tamano_Palabra) + 1]
+N ← Longitud (Palabra)
+Dimension Celdas (N)
+Para i ←1 hasta N con incremento de 1 Haga
+	Celdas[i] ← ‘-‘
+Fin Para
+Repita
+	Mostrar “ ”
+Mostrar “Oportunidades Restantes: “, Intentos – Turno
+Para i ← 1 hasta N con incremento de 1 Haga
+	Mostrar “ ”, Celdas[i]
+Fin Para
+Mostrar “Digite Una Letra: ”
+Leer letra
+Encontrado ← Falso
+Para i ← 1 hasta N con incremento de 1 Haga
+	Chr ← Subcadena (palabra,i,i)
+	Si (Mayusculas(letra)= Mayusculas(Chr)) Entonces
+		Encontrado ← Verdadero
+		Si Celdas[i] = ‘_’ Entonces
+			Celdas[i] ← Chr
+			Correcto ← Correcto + 1
+		Fin Si
+	Fin Si
+Fin Para
+Si No 	encontrado Entonces
+	Turno ← Turno + 1
+	Mostrar “Letra No Encontrada”
+	Caso Turno Haga
+		1:
+			Cabeza ← ‘0’
+		2:
+			Cuerpo ← ‘+’
+		3:
+			Pos_Inicial ← ‘/’
+		4:
+			Pos_Media ← ‘\’
+		5:	
+			Pos_Derecha ← ‘\’
+		6:	
+			Pos_Izquierda ← ‘/’
+	Fin Caso
+Fin Si
+	Mostrar “  ”, cabeza, “  “
+	Mostrar ”      “, Pos_Inicial, Cuerpo, Pos_Izquierda
+	Mostrar “      “, Pos_Derecha, “    “ , Pos_Media
+	Mostrar “ “
+Hasta Que (Turno >= Intentos  ó Correcto >= N)
+	Si (Correcto = N) Entonces
+		Mostrar “Felicitaciones Usted Ha Ganado.”
+	Si No
+		Mostrar “Usted Ha Perdido”
+	Fin Si
+		Mostrar “La Palabra Es: ”, Palabra
+FIN AHORCADO	
